@@ -1,0 +1,13 @@
+<mat-toolbar class="navbar-container">
+    <span><span style="color: white; padding-left: 10px;">Couch</span> Store</span>
+    <span class="spacer"></span>
+    <a mat-button routerLink="/">Home</a>
+    <a mat-button routerLink="/products">Products</a>
+    <ng-container *ngIf="!(isLoggedIn$ | async); else loggedIn">
+        <a mat-button routerLink="/signin">Sign In</a>
+        <a mat-button routerLink="/signup">Sign Up</a>
+    </ng-container>
+    <ng-template #loggedIn>
+        <a mat-button (click)="signOut()">Sign Out</a>
+    </ng-template>
+</mat-toolbar>

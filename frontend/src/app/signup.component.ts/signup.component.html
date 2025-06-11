@@ -1,0 +1,30 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title style="font-weight: bold;">CREATE AN ACCOUNT</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form [formGroup]="signupForm"  (ngSubmit)="onSubmit()" fxLayout="column">
+        <mat-form-field appearance="outline">
+            <mat-label>Username</mat-label>
+            <input matInput  formControlName="username" id="username" type="text" name="username" placeholder="Username" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>E-mail</mat-label>
+            <input matInput  formControlName="email" id="email" name="email" type="email" placeholder="E-mail" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" id="password" name="password" type="password" placeholder="Password" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput formControlName="confirmPassword" id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirm Password" required>
+        </mat-form-field>
+        <div *ngIf="(error$ | async) as error" style="color:red; margin: 10px;" >
+            {{ error.message }} 
+        </div>
+        <button mat-raised-button style="background-color: #bb003e !important; color: white;" [disabled]="signupForm.invalid"  type="submit">Sign Up</button>
+        <div style="padding-bottom: 10px !important;">Already have account? <button mat-button style="padding-bottom: 3px !important;color: #bb003e !important" (click)="goToSignInPage()">Login now</button></div>
+        </form>
+    </mat-card-content>
+</mat-card>

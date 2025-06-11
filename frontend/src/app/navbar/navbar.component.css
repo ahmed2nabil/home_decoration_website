@@ -1,0 +1,23 @@
+.spacer {
+    flex: 1 1 auto;
+}
+.navbar-container {
+    background-color: #bb003e !important;
+    width: 100%;
+    overflow-y: hidden !important;
+}
+.navbar-container a {
+    color: white;
+}
+.mat-toolbar-row, .mat-toolbar-single-row  {
+    padding: 0px !important;
+}
+@media (max-width: 600px) {
+    mat-toolbar {
+        flex-direction: column;
+        height: auto;
+    }
+    .spacer {
+        display: none;
+    }
+}

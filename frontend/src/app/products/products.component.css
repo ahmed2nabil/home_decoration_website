@@ -1,0 +1,43 @@
+
+.container {
+    padding: 16px;
+}
+
+.sidebar {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.product-listing {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    padding: 16px;
+}
+
+.product-card {
+    width: 100%;
+    height: 100%;
+}
+
+.color-options {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.price-range {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+}
+
+mat-slider {
+    width: 100%;
+}
+
+h2 {
+margin-top: 16px;
+margin-bottom: 8px;
+}

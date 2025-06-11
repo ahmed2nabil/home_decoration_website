@@ -1,0 +1,88 @@
+
+<!-- <mat-card>
+    <mat-card-header>
+        <mat-card-title>Products</mat-card-title>
+    </mat-card-header>
+    <mat-card-content  *ngIf="(products$ | async) as products">
+        <p>Here you can display your products.</p>
+    </mat-card-content>
+</mat-card> -->
+<div class="container">
+    <mat-grid-list cols="4" rowHeight="100vh">
+        <!-- Sidebar -->
+        <mat-grid-tile [colspan]="1" [rowspan]="1">
+            <mat-card class="sidebar">
+            <mat-card-content>
+                <h2>Categories</h2>
+                <mat-nav-list>
+                <a mat-list-item *ngFor="let category of categories">{{ category }}</a>
+                </mat-nav-list>
+    
+                <h2>Filter by Price</h2>
+                <mat-slider min="0" max="1000" step="10">
+                <input matSliderThumb [(value)]="priceRange" (valueChange)="onPriceRangeChange($event)">
+                </mat-slider>
+                <div class="price-range">
+                <span>$0</span>
+                <span>${{priceRange}}</span>
+                <span>$1000</span>
+                </div>
+    
+                <h2>Size</h2>
+                <mat-button-toggle-group multiple>
+                <mat-button-toggle value="XS">XS</mat-button-toggle>
+                <mat-button-toggle value="S">S</mat-button-toggle>
+                <mat-button-toggle value="M">M</mat-button-toggle>
+                <mat-button-toggle value="L">L</mat-button-toggle>
+                <mat-button-toggle value="XL">XL</mat-button-toggle>
+                </mat-button-toggle-group>
+    
+                <h2>Color</h2>
+                <div class="color-options">
+                <button mat-mini-fab color="primary"></button>
+                <button mat-mini-fab color="accent"></button>
+                <button mat-mini-fab color="warn"></button>
+                <button mat-mini-fab style="background-color: yellow;"></button>
+                <button mat-mini-fab style="background-color: green;"></button>
+                </div>
+            </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+        <!-- Product Listing -->
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
+            <div class="product-listing">
+            <!-- Sort Options -->
+            <mat-form-field>
+                <mat-label>Sort by</mat-label>
+                <mat-select [(value)]="selectedSort">
+                <mat-option *ngFor="let option of sortOptions" [value]="option">
+                    {{option}}
+                </mat-option>
+                </mat-select>
+            </mat-form-field>
+    
+            <!-- Products Grid -->
+            <mat-grid-list cols="3" rowHeight="1:1.5" gutterSize="16px">
+                <mat-grid-tile *ngFor="let product of products$ | async">
+                <mat-card class="product-card">
+                    <img mat-card-image [src]="getImagePath(product.imagePath)" [alt]="product.name">
+                    <mat-card-content>
+                    <h2>{{ product.name }}</h2>
+                    <p>{{ product.price | currency }}</p>
+                    </mat-card-content>
+                    <mat-card-actions>
+                    <button mat-raised-button style="background-color:#bb003e; color: white;">Add to Cart</button>
+                    </mat-card-actions>
+                </mat-card>
+                </mat-grid-tile>
+            </mat-grid-list>
+    
+            <!-- Pagination -->
+            <mat-paginator [length]="100"
+                            [pageSize]="10"
+                            [pageSizeOptions]="[5, 10, 25, 100]">
+            </mat-paginator>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
