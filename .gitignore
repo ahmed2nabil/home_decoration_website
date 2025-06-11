@@ -4,7 +4,6 @@
 dist
 tmp
 /out-tsc
-
 # dependencies
 node_modules
 
@@ -42,3 +41,4 @@ Thumbs.db
 .nx/workspace-data
 
 .angular
+backend/.env
